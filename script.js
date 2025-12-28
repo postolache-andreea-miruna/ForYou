@@ -60,6 +60,64 @@
       animStart();
     });
     window.addEventListener("resize", animStart);
+        const yearSelect = document.getElementById("yearSelect");
+
+    const sections = [
+      "welcome",
+      "music",
+      "you-and-me",
+      "you"
+    ];
+
+    const links = {
+      welcome: document.getElementById("welcomeLink"),
+      music: document.getElementById("musicLink"),
+      youAndMe: document.getElementById("youAndMeLink"),
+      you: document.getElementById("youLink")
+    };
+
+    function applyYear(year) {
+      document.querySelectorAll(".section").forEach(sec => {
+  sec.classList.remove("active");
+});
+      sections.forEach(id => {
+        const el2024 = document.getElementById(id);
+        const el2025 = document.getElementById(id + "2");
+
+        if (!el2024 || !el2025) return;
+
+        if (year === "2025") {
+          el2025.classList.add("active");
+          el2024.classList.remove("active");
+        } else {
+          el2024.classList.add("active");
+          el2025.classList.remove("active");
+        }
+      });
+
+      if (year === "2025") {
+        links.welcome.href = "#welcome2";
+        links.music.href = "#music2";
+        links.youAndMe.href = "#you-and-me2";
+        links.you.href = "#you2";
+        location.hash = "#welcome2";
+      } else {
+        links.welcome.href = "#welcome";
+        links.music.href = "#music";
+        links.youAndMe.href = "#you-and-me";
+        links.you.href = "#you";
+        location.hash = "#welcome";
+      }
+    }
+
+    // DEFAULT 2025
+    yearSelect.value = "2025";
+    applyYear("2025");
+
+    yearSelect.addEventListener("change", e => {
+      applyYear(e.target.value);
+    });
+
     animStart();
   };
   

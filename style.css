@@ -32,7 +32,18 @@ body {
   align-items: center;
   padding: 30px;
 }
+.section {
+  display: none;
+  padding: 1px 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 
+.section.active {
+  display: flex;
+}
 
 .card {
   width: 90%;
@@ -414,12 +425,22 @@ figure > div {
   color: white;
 }
 
-
-.section {
-  padding: 1px 20px;
+.navbar select {
+  border: 1px solid #ccc;
+  border-radius: 6px; 
+  background-color: #8b5f94;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-
+.navbar select:focus {
+  outline: none;
+  border-radius: 6px; 
+  border-color: #8b5f94;
+  box-shadow: 0 0 5px #8b5f94e5;
+}
 
 #gallery2 {
   position: relative;
@@ -643,7 +664,11 @@ figure > div {
 }
 
 #welcome {
-  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+}
+#welcome2 {
   align-items: center;
   justify-content: center;
   min-height: 100vh; 
